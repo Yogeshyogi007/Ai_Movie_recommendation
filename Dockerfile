@@ -1,14 +1,23 @@
-# Use a base image with Python
 FROM python:3.8-slim
 
-# Set working directory inside the container
 WORKDIR /app
 
-# Copy your app code into the container
+# Install system dependencies for building scientific packages
+RUN apt-get update && apt-get install -y \
+    python3-dev \
+    build-essential \
+    gfortran \
+    libatlas-base-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy project files
 COPY . .
 
-# Install dependencies
-RUN pip install -r requirements.txt
+# Upgrade pip and build tools
+RUN pip install --upgrade pip setuptools wheel
 
-# Run your application
+# Install Python requirements
+RUN pip install --only-binary :all: -r requirements.txt
+
+# Command to run your app
 CMD ["python", "run.py"]
