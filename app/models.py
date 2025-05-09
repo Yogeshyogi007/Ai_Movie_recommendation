@@ -29,11 +29,11 @@ class Movie(db.Model):
     year = db.Column(db.Integer)
     
 class Rating(db.Model):
+    __tablename__ = 'ratings'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    movie_id = db.Column(db.Integer, db.ForeignKey('movie.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # Note 'users.id'
+    movie_id = db.Column(db.Integer, db.ForeignKey('movies.id'), nullable=False)
     rating = db.Column(db.Float, nullable=False)
-    timestamp = db.Column(db.DateTime, server_default=db.func.now())
 
 class Recommendation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
