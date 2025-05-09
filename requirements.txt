@@ -10,4 +10,4 @@ matplotlib==3.7.2
 seaborn==0.12.2
 werkzeug==2.3.7
 flask-wtf==1.1.1
-email-validator==2.0.0 
+email-validator==2.0.0
