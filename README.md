@@ -19,6 +19,11 @@ pip install -r requirements.txt
 python movie_recommender.py
 ```
 
+3. To run the Full application:
+```bash
+python run.py
+```
+
 ## Dataset
 The system uses the MovieLens dataset for training and recommendations. The dataset includes:
 - Movie ratings
