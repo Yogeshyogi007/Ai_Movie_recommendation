@@ -1,10 +1,10 @@
-Flask==2.0.3
+Flask==2.2.5  # Updated to meet Flask-SQLAlchemy's requirement
 Flask-Login==0.6.2
 Flask-SQLAlchemy==3.0.3
 python-dotenv==0.21.0
 matplotlib==3.7.4
 seaborn==0.13.0
-Werkzeug==2.3.7
+Werkzeug==2.3.7  # Compatible with Flask 2.2.x
 Flask-WTF==1.2.1
 email-validator==2.0.0.post2
 psycopg2-binary==2.9.9
