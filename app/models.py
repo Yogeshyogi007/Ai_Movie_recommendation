@@ -6,13 +6,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-class User(UserMixin, db.Model):
+class User(db.Model):
+    __tablename__ = 'users'  # Explicit table name
+    
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     username = db.Column(db.String(80), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128), nullable=False)
-    ratings = db.relationship('Rating', backref='user', lazy=True)
-    preferred_genres = db.Column(db.String(500))
+    password_hash = db.Column(db.String(128))
+    preferred_genres = db.Column(db.String(255))
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
