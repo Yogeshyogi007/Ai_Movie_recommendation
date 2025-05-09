@@ -17,9 +17,7 @@ def create_app():
     # Configure Flask app
     app.config['SECRET_KEY'] = environ.get('SECRET_KEY', 'dev')
     app.config['SQLALCHEMY_DATABASE_URI'] = environ.get(
-        'DATABASE_URL',
-        'postgresql://postgres:postgres@localhost:5432/movie_recommender'
-    )
+        'DATABASE_URL', '').replace('postgres://', 'postgresql://')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     # Initialize extensions
